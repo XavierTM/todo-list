@@ -6,6 +6,7 @@ import { css } from "@emotion/css";
 import Button from "./Button";
 import { connect } from "react-redux";
 import { addToDo } from "./utils";
+import actions from "../actions";
 
 
 
@@ -27,6 +28,11 @@ class UnconnectedToDoList extends React.Component {
 
    addItem() {
       addToDo();
+   }
+
+
+   clearList() {
+      actions.clearList();
    }
 
    render() {
@@ -79,6 +85,7 @@ class UnconnectedToDoList extends React.Component {
                      marginRight: 7,
                      transform: 'rotate(45deg)'
                   }}
+                  onClick={this.clearList}
                >
                   +
                </Button>

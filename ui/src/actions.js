@@ -36,16 +36,25 @@ function getIndex(parentId) {
 }
 
 
-function initTodoList() {
+function clearList() {
+   setItems([]);
+}
 
-   const payload = retrieveList();
 
-   intializeIndices(payload);
-
+function setItems(items) {
    store.dispatch({
       type: ACTIONS.SET_ITEMS,
-      payload 
+      payload : items
    })
+}
+
+
+function initTodoList() {
+
+   const items = retrieveList();
+   intializeIndices(items);
+   setItems(items);
+
 }
 
 function deleteItem(id) {
@@ -84,7 +93,7 @@ store.subscribe(() => {
    storeList(items);
    intializeIndices(items);
    
-})
+});
 
 
 
@@ -92,6 +101,7 @@ const actions = {
    addItem,
    deleteItem,
    initTodoList,
+   clearList,
 }
 
 
