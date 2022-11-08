@@ -2,6 +2,8 @@
 
 body {
   font-family: 'Architects Daughter', cursive;
+  --header-height: 70px;
+  --footer-height: 70px;
 }
 
 
@@ -53,4 +55,8 @@ body {
 
 .grey-text {
   color: grey;
+}
+
+.greyish-on-hover:hover {
+  background-color: #EEE;
 }

@@ -7,12 +7,13 @@ import Button from "./Button";
 import { connect } from "react-redux";
 import { addToDo } from "./utils";
 import actions from "../actions";
+import { VIEW_PORT } from "../constants";
 
 
 
-const windowStyle = css({
-   height: 667,
-   width: 375,
+const viewportStyle = css({
+   height: 'var(--current-viewport-height)',
+   width: 'var(--current-viewport-width)',
    border: '1px solid black',
    position: 'relative',
    padding: 0,
@@ -33,6 +34,33 @@ class UnconnectedToDoList extends React.Component {
 
    clearList() {
       actions.clearList();
+   }
+
+   setCurrentViewport = () => {
+
+      let currentViewportHeight, currentViewportWidth;
+
+      if (window.innerHeight < VIEW_PORT.HEIGHT || window.innerWidth < VIEW_PORT.WIDTH) {
+         currentViewportHeight = '100%';
+         currentViewportWidth = '100%';
+      } else {
+         currentViewportHeight = VIEW_PORT.HEIGHT + 'px';
+         currentViewportWidth = VIEW_PORT.WIDTH + 'px';
+      }
+
+      document.documentElement.style.setProperty('--current-viewport-height', currentViewportHeight);
+      document.documentElement.style.setProperty('--current-viewport-width', currentViewportWidth);
+
+   }
+
+   componentDidMount() {
+      window.addEventListener('resize', this.setCurrentViewport);
+   }
+
+
+   componentWillUnmount() {
+      window.removeEventListener('resize', this.setCurrentViewport);
+      this.setCurrentViewport();
    }
 
    render() {
@@ -60,23 +88,40 @@ class UnconnectedToDoList extends React.Component {
 
       return <div className="vh-align full-screen">
          <div
-            className={windowStyle}
+            className={viewportStyle}
          >
 
-            <div style={{ height: 70, borderBottom: '1px solid' }} className="vh-align">
+            <div 
+               style={{ 
+                  height: 'var(--header-height)', 
+                  borderBottom: '1px solid',
+               }} 
+               className="vh-align">
                <h1>TODO LIST</h1>
             </div>
 
             <div
                style={{
-                  height: 532,
-                  overflowY: 'auto',
+                  height: 'calc(var(--current-viewport-height) - var(--header-height) - var(--footer-height))',
+                  '--padding': '20px',
+                  padding: 'var(--padding)',
+                  width: 'var(--current-viewport-width)',
+                  boxSizing: 'border-box',
+                  overflowY: 'auto'
                }}
             >
                {itemsJSX}
             </div>
 
-            <div style={{ height: 60, paddingRight: 30, borderTop: '1px solid' }} className='vr-align'>
+            <div 
+               style={{ 
+                  height: 'var(--footer-height)', 
+                  paddingRight: 30, 
+                  borderTop: '1px solid',
+                  // background: 'red'`
+               }} 
+               className='vr-align'
+            >
                   
                <Button
                   style={{

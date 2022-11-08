@@ -9,7 +9,7 @@ import { addToDo } from './utils';
 
 const itemStyle = css({
    padding: '8px 0',
-   paddingLeft: 20
+   paddingLeft: 20,
 })
 
 class Item extends Component {
@@ -139,7 +139,7 @@ class Item extends Component {
          </div>
       }
 
-      return <div className={itemStyle} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+      return <div className={`${itemStyle} greyish-on-hover`} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
 
          <div 
             style={{
