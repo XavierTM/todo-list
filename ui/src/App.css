@@ -1,0 +1,56 @@
+
+
+body {
+  font-family: 'Architects Daughter', cursive;
+}
+
+
+.valign, .v-align {
+  display: flex;
+  align-items: center;
+}
+
+.vhalign, .vh-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vr-align, .vr-align {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.fullscreen, .full-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.fill-container, .fill-parent {
+  height: 100%;
+  width: 100%;
+}
+
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.grey-text {
+  color: grey;
+}
