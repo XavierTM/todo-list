@@ -57,7 +57,6 @@ function deleteItem(id) {
    });
 }
 
-
 function intializeIndices(list=[], base=[]) {
    
    list.forEach((item, index ) => {
