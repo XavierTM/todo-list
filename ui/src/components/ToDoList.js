@@ -55,12 +55,12 @@ class UnconnectedToDoList extends React.Component {
 
    componentDidMount() {
       window.addEventListener('resize', this.setCurrentViewport);
+      this.setCurrentViewport();
    }
 
 
    componentWillUnmount() {
       window.removeEventListener('resize', this.setCurrentViewport);
-      this.setCurrentViewport();
    }
 
    render() {
