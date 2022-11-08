@@ -13,7 +13,8 @@ function addItem(title, parentId) {
    const item = {
       id,
       title,
-      items: []
+      items: [],
+      completed: false,
    }
 
    const index = getIndex(parentId)
@@ -66,6 +67,17 @@ function deleteItem(id) {
    });
 }
 
+
+function markCompleted(id, completed) {
+   const index = getIndex(id);
+
+   store.dispatch({
+      payload: { index, completed },
+      type: ACTIONS.MARK_ITEM,
+   });
+   
+}
+
 function intializeIndices(list=[], base=[]) {
    
    list.forEach((item, index ) => {
@@ -99,9 +111,10 @@ store.subscribe(() => {
 
 const actions = {
    addItem,
+   clearList,
    deleteItem,
    initTodoList,
-   clearList,
+   markCompleted,
 }
 
 

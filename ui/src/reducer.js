@@ -58,6 +58,24 @@ function deleteItemReducer(state, payload) {
    
 }
 
+
+function markItemReducer(state, payload) {
+
+
+   const { index, completed } = payload;
+   const { items } = state;
+
+   const target = getTarget(index, items);
+
+   target.completed = completed;
+
+   return {
+      ...state,
+      items: [ ...items ],
+   }
+}
+
+
 function getLastElement(arr) {
    return arr[arr.length - 1];
 }
@@ -81,7 +99,11 @@ function reducer(state, action) {
          return setItemsReducer(state, payload);
 
       case ACTIONS.DELETE_ITEM:
-            return deleteItemReducer(state, payload);
+         return deleteItemReducer(state, payload);
+
+      case ACTIONS.MARK_ITEM:
+         return markItemReducer(state, payload);
+
 
       default:
          return state;

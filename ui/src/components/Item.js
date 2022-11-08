@@ -62,6 +62,11 @@ class Item extends Component {
       return this.updateState({ expanded });
    }
 
+   toggleCompleted = () => {
+      const completed = !this.props.completed;
+      actions.markCompleted(this.props.id, completed);
+   }
+
    onChildItemBlur = e => {
       if (e.detail.id === this.focusedChild) {
          this.updateState({ displayingActions: true });
@@ -143,7 +148,7 @@ class Item extends Component {
             }}
          >
 
-            <input type="checkbox" checked={this.props.completed} />
+            <input type="checkbox" checked={this.props.completed} onChange={this.toggleCompleted} />
 
             <span 
                style={{
