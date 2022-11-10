@@ -2,21 +2,24 @@
 
 function Button(props) {
 
-   return <button
+   return <span
       style={{
          borderRadius: '50%',
          border: '1px solid',
          fontSize: 30,
-         aspectRatio: 1,
-         height: 40,
+         fontWeight: 'bold',
+         '--dimension': '40px',
+         width: 'var(--dimension)',
+         height: 'var(--dimension)',
          color: 'white',
          background: '#007fff',
          ...(props.style || {})
       }}
       onClick={props.onClick}
+      className="vh-align"
    >
       {props.children}
-   </button>
+   </span>
 }
 
 export default Button;

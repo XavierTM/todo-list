@@ -1,10 +1,10 @@
 
 import Component from '@xavisoft/react-component';
 import { css } from '@emotion/css';
-import Button from './Button';
 import { v4 as uuid } from 'uuid';
 import actions from '../actions';
 import { addToDo } from './utils';
+import ItemButton from './ItemButton';
 
 
 const itemStyle = css({
@@ -181,22 +181,5 @@ class Item extends Component {
    }
 }
 
-function ItemButton(props) {
-
-
-   return <Button
-
-      {...props}
-
-      style={{
-         height: 30,
-         fontSize: 20,
-         marginRight: 10,
-         ...(props.style || {}),
-      }}
-   >
-      {props.children}
-   </Button>
-}
 
 export default Item;
