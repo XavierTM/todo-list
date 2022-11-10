@@ -3,7 +3,7 @@ import actions from "../actions";
 
 function addToDo(parentId) {
    
-   const title = window.prompt('Task:', 'Undefined task');
+   const title = window.prompt('Task:');
 
    if (!title)
       return;
