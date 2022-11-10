@@ -10,7 +10,7 @@ function Button(props) {
          aspectRatio: 1,
          height: 40,
          color: 'white',
-         background: 'green',
+         background: '#007fff',
          ...(props.style || {})
       }}
       onClick={props.onClick}
